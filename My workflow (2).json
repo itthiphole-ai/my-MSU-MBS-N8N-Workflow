@@ -1,0 +1,117 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        -48
+      ],
+      "id": "008f4b24-fc13-4cb5-81f3-d0562c55a9a0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "JQoQCFCO7X3pXhKr",
+          "mode": "list",
+          "cachedResultName": "myDatable22",
+          "cachedResultUrl": "/projects/utXawjOFVAS63EDt/datatables/JQoQCFCO7X3pXhKr"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ $json.pubDate }}",
+            "News": "={{ $json['content:encodedSnippet'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "News",
+              "displayName": "News",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2ad6c9f9-5e88-4a97-8c76-8883089bd4a3",
+      "name": "Insert row"
+    },
+    {
+      "parameters": {
+        "url": "https://www.techtalkthai.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -272,
+        -48
+      ],
+      "id": "800583ac-1e45-411d-9068-8a4cdede67a3",
+      "name": "Tech-IT-News"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Tech-IT-News",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tech-IT-News": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "79dc44a0-c129-446d-99af-ae02fe5b09e0",
+  "meta": {
+    "instanceId": "012d3a8775f32d72759ba1c5d87ef85c938a6c8838308d234f586d527f91ca30"
+  },
+  "id": "AHcFbXiB3G3ikWwZ",
+  "tags": []
+}
