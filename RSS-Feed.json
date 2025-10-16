@@ -14,13 +14,13 @@
     },
     {
       "parameters": {
-        "maxItems": 5
+        "maxItems": 10
       },
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        800,
-        96
+        896,
+        80
       ],
       "id": "69e4aa6e-07a5-4d01-aa49-ebccb53d7b1a",
       "name": "Limit"
@@ -38,20 +38,6 @@
       ],
       "id": "39099771-acd8-48dd-adeb-be34ab0e6bb3",
       "name": "DroidSan-RSS"
-    },
-    {
-      "parameters": {
-        "url": "https://www.techtalkthai.com/feed/",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.rssFeedRead",
-      "typeVersion": 1.2,
-      "position": [
-        512,
-        0
-      ],
-      "id": "a9a2ff67-6baa-4fae-990c-fa19ae5e0c7e",
-      "name": "TechTalk-RSSRead"
     },
     {
       "parameters": {
@@ -85,22 +71,22 @@
       "parameters": {
         "dataTableId": {
           "__rl": true,
-          "value": "lft7tkCly6j5TdWB",
+          "value": "JQoQCFCO7X3pXhKr",
           "mode": "list",
-          "cachedResultName": "myDatatable",
-          "cachedResultUrl": "/projects/utXawjOFVAS63EDt/datatables/lft7tkCly6j5TdWB"
+          "cachedResultName": "myDatable22",
+          "cachedResultUrl": "/projects/utXawjOFVAS63EDt/datatables/JQoQCFCO7X3pXhKr"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "link": "={{ $json.link }}",
-            "news": "={{ $json.title }}"
+            "Date": "={{ $json.isoDate }}",
+            "News": "={{ $json.title }}"
           },
           "matchingColumns": [],
           "schema": [
             {
-              "id": "news",
-              "displayName": "news",
+              "id": "Date",
+              "displayName": "Date",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -109,8 +95,8 @@
               "removed": false
             },
             {
-              "id": "link",
-              "displayName": "link",
+              "id": "News",
+              "displayName": "News",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -127,51 +113,11 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1,
       "position": [
-        1008,
-        432
+        1104,
+        304
       ],
-      "id": "623c2a45-0359-4f9c-bdf7-7b6468a167b1",
+      "id": "8098fce7-33e0-47b6-b6b1-5f27854dc518",
       "name": "Insert row"
-    },
-    {
-      "parameters": {
-        "table": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
-        }
-      },
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 2.5,
-      "position": [
-        1008,
-        240
-      ],
-      "id": "2fbec17e-0128-490c-aadb-2272b3f46104",
-      "name": "Insert rows in a table",
-      "credentials": {
-        "mySql": {
-          "id": "7fjAECBJJqeAXVoj",
-          "name": "MySQL account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "updates": [
-          "message"
-        ],
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.telegramTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        1216,
-        240
-      ],
-      "id": "2a0fd200-9389-4138-b208-606dcf8473da",
-      "name": "Telegram Trigger",
-      "webhookId": "6d85dba9-0f35-450f-8934-3a0853baa627"
     }
   ],
   "pinData": {},
@@ -179,11 +125,6 @@
     "When clicking ‘Execute workflow’": {
       "main": [
         [
-          {
-            "node": "TechTalk-RSSRead",
-            "type": "main",
-            "index": 0
-          },
           {
             "node": "RSS Read",
             "type": "main",
@@ -209,27 +150,11 @@
             "node": "Insert row",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Insert rows in a table",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
     },
     "DroidSan-RSS": {
-      "main": [
-        [
-          {
-            "node": "Limit",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "TechTalk-RSSRead": {
       "main": [
         [
           {
@@ -267,7 +192,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "fdfada14-3ff6-4e0e-89ea-97842a40821e",
+  "versionId": "979f468d-c064-4d5e-b144-f789624d352c",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "012d3a8775f32d72759ba1c5d87ef85c938a6c8838308d234f586d527f91ca30"
